@@ -38,7 +38,6 @@ export const SignInForm = ({
                   name='identifier'
                   type='text'
                   placeholder='username or email'
-                  required
                 />
               </div>
               <div className='grid gap-1'>
@@ -50,7 +49,6 @@ export const SignInForm = ({
                   name='password'
                   type='password'
                   placeholder='password'
-                  required
                 />
               </div>
               <Button type='submit' className='w-full'>

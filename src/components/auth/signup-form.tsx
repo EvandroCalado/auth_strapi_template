@@ -1,3 +1,8 @@
+'use client';
+
+import { useActionState } from 'react';
+
+import { registerUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
@@ -16,6 +21,9 @@ export const SignUpForm = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) => {
+  const [formState, formAction] = useActionState(registerUserAction, null);
+  console.log(formState);
+
   return (
     <div className={cn('flex flex-col gap-6 max-w-sm', className)} {...props}>
       <Card>
@@ -27,7 +35,7 @@ export const SignUpForm = ({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form action={formAction}>
             <div className='flex flex-col gap-6'>
               <div className='grid gap-1'>
                 <Label htmlFor='email' className='text-xs'>
@@ -38,7 +46,6 @@ export const SignUpForm = ({
                   name='username'
                   type='text'
                   placeholder='username'
-                  required
                 />
               </div>
               <div className='grid gap-1'>
@@ -50,7 +57,6 @@ export const SignUpForm = ({
                   name='email'
                   type='text'
                   placeholder='name@example.com'
-                  required
                 />
               </div>
               <div className='grid gap-1'>
@@ -62,7 +68,6 @@ export const SignUpForm = ({
                   name='password'
                   type='password'
                   placeholder='password'
-                  required
                 />
               </div>
               <Button type='submit' className='w-full'>
