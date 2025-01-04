@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
+import { Logo } from '../shared/Logo';
 import {
   Button,
   Card,
@@ -18,7 +19,8 @@ export const SignInForm = ({
   return (
     <div className={cn('flex flex-col gap-6 max-w-sm', className)} {...props}>
       <Card>
-        <CardHeader>
+        <CardHeader className='flex flex-col items-center'>
+          <Logo />
           <CardTitle className='text-2xl text-center'>Sign In</CardTitle>
           <CardDescription>
             Enter your details to sign in to your account
