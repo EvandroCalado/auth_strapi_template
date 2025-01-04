@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
-import { Logo } from '../shared/Logo';
+import { Logo } from '../shared';
 import {
   Button,
   Card,

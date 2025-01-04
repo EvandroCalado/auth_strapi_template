@@ -6,7 +6,7 @@ import { registerUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
-import { Logo } from '../shared/Logo';
+import { Logo, ZodErrors } from '../shared';
 import {
   Button,
   Card,
@@ -21,11 +21,13 @@ export const SignUpForm = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) => {
-  const [formState, formAction] = useActionState(registerUserAction, null);
-  console.log(formState);
+  const [state, formAction, isPending] = useActionState(
+    registerUserAction,
+    null,
+  );
 
   return (
-    <div className={cn('flex flex-col gap-6 max-w-sm', className)} {...props}>
+    <div className={cn('flex flex-col gap-6 max-w-md', className)} {...props}>
       <Card>
         <CardHeader className='flex flex-col items-center'>
           <Logo />
@@ -47,6 +49,7 @@ export const SignUpForm = ({
                   type='text'
                   placeholder='username'
                 />
+                <ZodErrors error={state?.zodErrors?.username} />
               </div>
               <div className='grid gap-1'>
                 <Label htmlFor='email' className='text-xs'>
@@ -58,6 +61,7 @@ export const SignUpForm = ({
                   type='text'
                   placeholder='name@example.com'
                 />
+                <ZodErrors error={state?.zodErrors?.email} />
               </div>
               <div className='grid gap-1'>
                 <Label htmlFor='password' className='text-xs'>
@@ -69,6 +73,7 @@ export const SignUpForm = ({
                   type='password'
                   placeholder='password'
                 />
+                <ZodErrors error={state?.zodErrors?.password} />
               </div>
               <Button type='submit' className='w-full'>
                 Sign Up
