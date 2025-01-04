@@ -1,5 +1,6 @@
 'use server';
 
+import { registerUserService } from '@/services';
 import { z } from 'zod';
 
 const registerSchema = z.object({
@@ -42,6 +43,28 @@ export const registerUserAction = async (
       message: 'Missing fields. Failed to register.',
     };
   }
+
+  const responseData = await registerUserService(validatedFields.data);
+
+  if (!responseData) {
+    return {
+      ...prevState,
+      strapiErrors: null,
+      zodErrors: null,
+      message: 'Ops! Something went wrong. Please try again.',
+    };
+  }
+
+  if (responseData.error) {
+    return {
+      ...prevState,
+      strapiErrors: responseData.error,
+      zodErrors: null,
+      message: 'Failed to Register.',
+    };
+  }
+
+  console.log(responseData.jwt);
 
   return {
     ...prevState,
