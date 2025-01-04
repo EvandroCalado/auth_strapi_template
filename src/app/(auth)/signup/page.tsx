@@ -1,7 +1,11 @@
-export const SignUpPage = () => {
+import { SignUpForm } from '@/components/auth';
+
+const SignUpPage = () => {
   return (
-    <div>
-      <h1>SignUpPage</h1>
+    <div className='flex items-center justify-center h-full'>
+      <SignUpForm />
     </div>
   );
 };
+
+export default SignUpPage;
