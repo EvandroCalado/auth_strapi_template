@@ -20,7 +20,11 @@ export const RootLayout = ({
 }>) => {
   return (
     <html lang='pt-BR'>
-      <body className={`${geistSans.variable} antialiased`}>{children}</body>
+      <body
+        className={`${geistSans.variable} antialiased flex h-screen flex-col`}
+      >
+        <main className='flex-1'>{children}</main>
+      </body>
     </html>
   );
 };
