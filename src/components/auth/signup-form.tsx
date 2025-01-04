@@ -75,8 +75,8 @@ export const SignUpForm = ({
                 />
                 <ZodErrors error={state?.zodErrors?.password} />
               </div>
-              <Button type='submit' className='w-full'>
-                Sign Up
+              <Button type='submit' className='w-full' disabled={isPending}>
+                {isPending ? 'Loading...' : 'Sign Up'}
               </Button>
             </div>
             <div className='mt-4 text-sm text-center'>
