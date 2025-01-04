@@ -6,16 +6,19 @@ import { registerUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
-import { Logo, ZodErrors } from '../shared';
+import { Logo } from '../shared';
 import {
   Button,
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
   Input,
 } from '../ui';
+import { StrapiErrors } from './strapi-errors';
+import { ZodErrors } from './zod-errors';
 
 export const SignUpForm = ({
   className,
@@ -79,15 +82,18 @@ export const SignUpForm = ({
                 {isPending ? 'Loading...' : 'Sign Up'}
               </Button>
             </div>
-            <div className='mt-4 text-sm text-center'>
-              Have an account?{' '}
-              <a href='/signin' className='underline underline-offset-4'>
-                Sign In
-              </a>
-            </div>
           </form>
         </CardContent>
+        <CardFooter>
+          <StrapiErrors error={state?.strapiErrors} />
+        </CardFooter>
       </Card>
+      <div className='text-sm text-center'>
+        Have an account?{' '}
+        <a href='/signin' className='underline underline-offset-4'>
+          Sign In
+        </a>
+      </div>
     </div>
   );
 };
