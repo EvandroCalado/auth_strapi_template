@@ -9,6 +9,11 @@ export const Header = ({ user }: { user: boolean }) => {
     <header className='container flex items-center justify-between p-5 mx-auto'>
       <Logo />
 
+      <nav className='flex items-center gap-4 font-semibold'>
+        <Link href='/'>Home</Link>
+        <Link href='/dashboard'>Dashboard</Link>
+      </nav>
+
       {user ? (
         <form action={logoutUser}>
           <Button>Logout</Button>
