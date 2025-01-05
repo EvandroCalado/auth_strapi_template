@@ -13,10 +13,10 @@ const DashboardPage = async () => {
 
       <div className='flex flex-col text-muted-foreground'>
         <span>
-          <strong>Username:</strong> {user.data.username}
+          <strong>Username:</strong> {user?.data?.username}
         </span>
         <span>
-          <strong>Email:</strong> {user.data.email}
+          <strong>Email:</strong> {user?.data?.email}
         </span>
       </div>
     </div>

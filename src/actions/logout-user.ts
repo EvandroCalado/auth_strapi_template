@@ -1,6 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -13,4 +14,6 @@ const config = {
 export const logoutUser = async () => {
   const cookieStore = await cookies();
   cookieStore.set('jwt', '', { ...config, maxAge: 0 });
+
+  redirect('/');
 };
