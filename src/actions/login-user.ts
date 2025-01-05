@@ -1,24 +1,21 @@
 'use server';
 
-import { registerUserService } from '@/services';
+import { loginUserService } from '@/services';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
-const registerSchema = z.object({
-  username: z
+const loginSchema = z.object({
+  identifier: z
     .string()
-    .min(3, {
-      message: 'Username must be between 3 and 20 characters',
-    })
-    .max(20, {
-      message: 'Username must be between 3 and 20 characters',
+    .min(3, { message: 'Identifier must have at least 3 or more characters' })
+    .max(100, {
+      message: 'Please enter a valid username or email address',
     }),
-  email: z.string().email({ message: 'Please enter a valid email address' }),
   password: z
     .string()
     .min(6, {
-      message: 'Password must be between 6 and 100 characters',
+      message: 'Password must have at least 6 or more characters',
     })
     .max(100, {
       message: 'Password must be between 6 and 100 characters',
@@ -33,15 +30,11 @@ const config = {
   secure: process.env.NODE_ENV === 'production',
 };
 
-export const registerUserAction = async (
-  prevState: any,
-  formData: FormData,
-) => {
-  const { username, email, password } = Object.fromEntries(formData);
+export const loginUserAction = async (prevState: any, formData: FormData) => {
+  const { identifier, password } = Object.fromEntries(formData);
 
-  const validatedFields = registerSchema.safeParse({
-    username,
-    email,
+  const validatedFields = loginSchema.safeParse({
+    identifier,
     password,
   });
 
@@ -49,17 +42,16 @@ export const registerUserAction = async (
     return {
       ...prevState,
       zodErrors: validatedFields.error.flatten().fieldErrors,
-      strapiErrors: null,
-      message: 'Missing fields. Failed to register.',
+      message: 'Missing Fields. Failed to Login.',
     };
   }
 
-  const responseData = await registerUserService(validatedFields.data);
+  const responseData = await loginUserService(validatedFields.data);
 
   if (!responseData) {
     return {
       ...prevState,
-      strapiErrors: null,
+      strapiErrors: responseData.error,
       zodErrors: null,
       message: 'Ops! Something went wrong. Please try again.',
     };
@@ -70,7 +62,7 @@ export const registerUserAction = async (
       ...prevState,
       strapiErrors: responseData.error,
       zodErrors: null,
-      message: 'Failed to Register.',
+      message: 'Failed to Login.',
     };
   }
 

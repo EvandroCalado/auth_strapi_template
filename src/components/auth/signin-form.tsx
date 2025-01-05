@@ -1,3 +1,8 @@
+'use client';
+
+import { useActionState } from 'react';
+
+import { loginUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
@@ -7,15 +12,20 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
   Input,
 } from '../ui';
+import { StrapiErrors } from './strapi-errors';
+import { ZodErrors } from './zod-errors';
 
 export const SignInForm = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) => {
+  const [state, formAction, isPending] = useActionState(loginUserAction, null);
+
   return (
     <div className={cn('flex flex-col gap-6 max-w-sm', className)} {...props}>
       <Card>
@@ -27,18 +37,19 @@ export const SignInForm = ({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form action={formAction}>
             <div className='flex flex-col gap-6'>
               <div className='grid gap-1'>
-                <Label htmlFor='email' className='text-xs'>
-                  Email
+                <Label htmlFor='identifier' className='text-xs'>
+                  Identifier
                 </Label>
                 <Input
                   id='identifier'
                   name='identifier'
                   type='text'
-                  placeholder='username or email'
+                  placeholder='Username or email'
                 />
+                <ZodErrors error={state?.zodErrors?.identifier} />
               </div>
               <div className='grid gap-1'>
                 <Label htmlFor='password' className='text-xs'>
@@ -50,20 +61,24 @@ export const SignInForm = ({
                   type='password'
                   placeholder='password'
                 />
+                <ZodErrors error={state?.zodErrors?.password} />
               </div>
-              <Button type='submit' className='w-full'>
-                Sign In
+              <Button type='submit' className='w-full' disabled={isPending}>
+                {isPending ? 'Loading...' : 'Sign In'}
               </Button>
-            </div>
-            <div className='mt-4 text-sm text-center'>
-              Don&apos;t have an account?{' '}
-              <a href='/signup' className='underline underline-offset-4'>
-                Sign Up
-              </a>
             </div>
           </form>
         </CardContent>
+        <CardFooter>
+          <StrapiErrors error={state?.strapiErrors} />
+        </CardFooter>
       </Card>
+      <div className='text-sm text-center'>
+        Don&apos;t have an account?{' '}
+        <a href='/signup' className='underline underline-offset-4'>
+          Sign Up
+        </a>
+      </div>
     </div>
   );
 };
