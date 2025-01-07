@@ -5,9 +5,9 @@ import { useActionState } from 'react';
 import { registerUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
-import { Logo } from '../shared';
 import {
   Button,
   Card,
@@ -36,8 +36,13 @@ export const SignUpForm = ({
       {...props}
     >
       <Card>
-        <CardHeader className='flex flex-col items-center'>
-          <Logo />
+        <CardHeader className='relative flex flex-col items-center'>
+          <Button asChild className='absolute left-0 -top-14'>
+            <Link href='/'>
+              <ArrowLeft />
+              Back
+            </Link>
+          </Button>
           <CardTitle className='text-2xl text-center'>Sign Up</CardTitle>
           <CardDescription>
             Enter your details to create a new account

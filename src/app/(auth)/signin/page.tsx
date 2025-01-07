@@ -3,7 +3,7 @@ import { AuthBlock, SignInForm } from '@/components/auth';
 const SignInPage = () => {
   return (
     <div className='grid grid-cols-1 items-center justify-center md:grid-cols-5 h-full'>
-      <div className='col-span-2 max-md:hidden h-full flex justify-end bg-primary'>
+      <div className='col-span-2 max-md:hidden h-full flex justify-end bg-[url("/bg.jpg")]'>
         <AuthBlock
           label='Sign In'
           title='Welcome back!'

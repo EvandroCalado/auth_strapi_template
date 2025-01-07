@@ -3,7 +3,7 @@ import { AuthBlock, SignUpForm } from '@/components/auth';
 const SignUpPage = () => {
   return (
     <div className='grid grid-cols-1 items-center justify-center md:grid-cols-5 h-full'>
-      <div className='col-span-2 max-md:hidden h-full flex justify-end bg-primary'>
+      <div className='col-span-2 max-md:hidden h-full flex justify-end bg-[url("/bg.jpg")]'>
         <AuthBlock
           label='Sign Up'
           title='Welcome!'
