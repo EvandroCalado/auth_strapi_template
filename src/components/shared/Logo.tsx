@@ -5,10 +5,14 @@ import { Button } from '../ui';
 
 export const Logo = () => {
   return (
-    <Button size='icon' asChild>
-      <Link href='/'>
+    <Link
+      href='/'
+      className='flex items-center gap-2 text-xl text-white font-semibold'
+    >
+      <Button size='icon'>
         <Fingerprint />
-      </Link>
-    </Button>
+      </Button>
+      <span className='max-md:hidden'>Strapi Auth</span>
+    </Link>
   );
 };
