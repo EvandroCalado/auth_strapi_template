@@ -5,6 +5,7 @@ import { useActionState } from 'react';
 import { registerUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
+import Link from 'next/link';
 
 import { Logo } from '../shared';
 import {
@@ -30,7 +31,10 @@ export const SignUpForm = ({
   );
 
   return (
-    <div className={cn('flex flex-col gap-6 max-w-md', className)} {...props}>
+    <div
+      className={cn('flex flex-col gap-3 p-5 max-w-sm', className)}
+      {...props}
+    >
       <Card>
         <CardHeader className='flex flex-col items-center'>
           <Logo />
@@ -39,7 +43,7 @@ export const SignUpForm = ({
             Enter your details to create a new account
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className='pb-0'>
           <form action={formAction}>
             <div className='flex flex-col gap-6'>
               <div className='grid gap-1'>
@@ -62,7 +66,7 @@ export const SignUpForm = ({
                   id='email'
                   name='email'
                   type='text'
-                  placeholder='name@example.com'
+                  placeholder='email'
                 />
                 <ZodErrors error={state?.zodErrors?.email} />
               </div>
@@ -88,11 +92,14 @@ export const SignUpForm = ({
           <StrapiErrors error={state?.strapiErrors} />
         </CardFooter>
       </Card>
-      <div className='text-sm text-center'>
+      <div className='text-sm text-center text-muted-foreground'>
         Have an account?{' '}
-        <a href='/signin' className='underline underline-offset-4'>
+        <Link
+          href='/signin'
+          className='underline underline-offset-4 hover:text-primary'
+        >
           Sign In
-        </a>
+        </Link>
       </div>
     </div>
   );
