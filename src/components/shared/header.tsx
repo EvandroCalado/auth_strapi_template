@@ -1,10 +1,15 @@
+import { use } from 'react';
+
 import { logoutUser } from '@/actions';
+import { getUserMe } from '@/services';
 import Link from 'next/link';
 
 import { Button } from '../ui';
 import { Logo } from './Logo';
 
-export const Header = ({ user }: { user: boolean }) => {
+export const Header = () => {
+  const user = use(getUserMe());
+
   return (
     <header className='p-5'>
       <div className='flex relative items-center justify-between max-w-[900px] mx-auto bg-black/30 p-5 rounded-2xl'>
@@ -15,7 +20,7 @@ export const Header = ({ user }: { user: boolean }) => {
           <Link href='/dashboard'>Dashboard</Link>
         </nav>
 
-        {user ? (
+        {user.data ? (
           <form action={logoutUser}>
             <Button>Logout</Button>
           </form>

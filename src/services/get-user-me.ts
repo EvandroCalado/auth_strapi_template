@@ -1,6 +1,5 @@
+import { getAuthToken } from '@/actions';
 import { STRAPI_URL } from '@/lib/utils';
-
-import { getAuthToken } from './get-auth-token';
 
 export const getUserMe = async () => {
   const url = new URL('/api/users/me', STRAPI_URL);

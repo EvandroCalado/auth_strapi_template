@@ -3,8 +3,6 @@ import { getUserMe } from '@/services';
 const DashboardPage = async () => {
   const user = await getUserMe();
 
-  console.log(user.data);
-
   return (
     <div className='flex flex-col text-white items-center justify-center w-full gap-6 h-4/5'>
       <h2 className='font-semibold text-xl'>User strapi data</h2>
