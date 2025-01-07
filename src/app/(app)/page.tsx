@@ -6,7 +6,7 @@ export const HomePage = () => {
     <div className='flex flex-col text-white items-center justify-center w-full gap-8 h-4/5'>
       <h1 className=' text-6xl font-semibold'>Strapi Auth</h1>
 
-      <p className='text-xl'>Strapi auth with Next 15 and Auth.js</p>
+      <p className='text-xl'>Strapi auth with Next 15</p>
 
       <Button asChild>
         <Link
