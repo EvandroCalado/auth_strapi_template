@@ -1,11 +1,21 @@
+import { Button } from '@/components/ui';
+import Link from 'next/link';
+
 export const HomePage = () => {
   return (
-    <div className='flex flex-col items-center justify-center w-full gap-6 h-4/5'>
-      <div className='flex items-center justify-center w-4/5 h-10 rounded-full md:w-1/3 md:h-24 bg-gradient-to-r from-zinc-500 via-zinc-600 to-zinc-700'>
-        <h2 className='text-xl font-bold text-transparent bg-white md:text-4xl bg-clip-text'>
-          Home Page
-        </h2>
-      </div>
+    <div className='flex flex-col text-white items-center justify-center w-full gap-8 h-4/5'>
+      <h1 className=' text-6xl font-semibold'>Strapi Auth</h1>
+
+      <p className='text-xl'>Strapi auth with Next 15 and Auth.js</p>
+
+      <Button asChild>
+        <Link
+          href='https://github.com/EvandroCalado/auth_strapi_template'
+          target='_blank'
+        >
+          Github Repo
+        </Link>
+      </Button>
     </div>
   );
 };
