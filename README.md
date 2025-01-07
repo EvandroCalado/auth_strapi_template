@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+![Captura de tela de 2025-01-07 20-22-33](https://github.com/user-attachments/assets/7fc15ed7-9b52-4917-b7ef-1ba56acb744e)
 
-First, run the development server:
+# 🛡️ Projeto de Autenticação com Strapi e Next.js 15
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📚 Visão Geral
+Este projeto implementa um sistema de autenticação utilizando **Strapi** como backend headless CMS e **Next.js 15** como frontend. A aplicação permite registro, login, logout e gerenciamento de sessão de usuários.
+
+## 🚀 Tecnologias Utilizadas
+
+- **Strapi** (Backend)
+- **Next.js 15** (Frontend)
+- **TypeScript**
+- **TailwindCSS** (Estilização)
+- **JWT** (Autenticação via Token)
+
+## 🛠️ Funcionalidades
+
+- Registro de novos usuários
+- Autenticação e autorização com JWT
+- Proteção de rotas no Next.js
+- Persistência de sessão
+- Logout seguro
+
+## 📦 Estrutura do Projeto
+
+```
+📂 frontend (Next.js 15)
+.editorconfig
+.gitignore
+.next/
+package.json
+public/
+README.md
+│   ├── src/
+│   │   ├── actions/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── lib/
+│   │   ├── services/
+│   │   ├── styles/
+tailwind.config.ts
+tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Configuração backend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Crie um projeto Strapi:
+   ```bash
+   npx create-strapi-app@latest
+   ```
+   
+2. Suba o servidor com o comando:
+   ```bash
+   npm run develop
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Configuração frontend
 
-## Learn More
+1. Clone o repositório frontend:
+   ```bash
+   git clone https://github.com/EvandroCalado/auth_strapi_template
+   cd  auth_strapi_template
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Suba o servidor com o comando:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔑 Rotas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Home:** `/`
+- **Sign In:** `/signin`
+- **Sign Up:** `/signup`
+- **Dashboard (rota protegida):** `/dashboard`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 📝 Contribuição
+Contribuições são bem-vindas! Abra uma issue ou envie um PR com melhorias.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Licença
+Este projeto está sob a licença MIT.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contato
+- **Autor:** Evandro Calado
+- **Email:** [evandrocalado07@gmail.com](mailto:evandrocalado07@gmail.com)
+
+---
+Feito com ❤️ por Evandro Calado 🚀
+
