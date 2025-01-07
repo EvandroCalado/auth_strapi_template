@@ -11,10 +11,10 @@ export const AppLayout = async ({
   const isLogged = user.data ? true : false;
 
   return (
-    <>
+    <div className='bg-[url("/bg.jpg")] h-full'>
       <Header user={isLogged} />
       {children}
-    </>
+    </div>
   );
 };
 
