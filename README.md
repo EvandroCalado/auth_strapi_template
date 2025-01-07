@@ -21,6 +21,7 @@ Este projeto implementa um sistema de autenticação utilizando **Strapi** como 
 - Proteção de rotas no Next.js
 - Persistência de sessão
 - Logout seguro
+- Redirecionamento baseado na autenticação
 
 ## 📦 Estrutura do Projeto
 
@@ -43,16 +44,27 @@ tailwind.config.ts
 tsconfig.json
 ```
 
+## ⚙️ Estrutura de Diretórios
+- **actions**: Contém as ações no servidor.
+- **app**: Contém as páginas e layouts.
+- **components**: Contém os componentes reutilizáveis da aplicação.
+- **lib**: Contém utilitários e funções auxiliares.
+- **services**: Contém os serviços de comunicação com o backend Strapi.
+- **styles**: Contém os arquivos de estilo.
+
 ## ⚙️ Configuração backend
 
 1. Crie um projeto Strapi:
    ```bash
    npx create-strapi-app@latest
    ```
-   
 2. Suba o servidor com o comando:
    ```bash
    npm run develop
+   ```
+3. Abra o painel admin:
+   ```bash
+   Abra http://localhost:1337/admin no seu navegador para fazer o login.
    ```
 
 ## ⚙️ Configuração frontend
@@ -69,6 +81,10 @@ tsconfig.json
 3. Suba o servidor com o comando:
    ```bash
    npm run dev
+   ```
+4. Abra o projeto:
+   ```bash
+   Abra http://localhost:3000 no seu navegador para ver o resultado.
    ```
 
 ## 🔑 Rotas
