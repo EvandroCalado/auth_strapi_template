@@ -8,14 +8,21 @@ export const HomePage = () => {
 
       <p className='text-xl'>Strapi auth with Next 15</p>
 
-      <Button asChild>
-        <Link
-          href='https://github.com/EvandroCalado/auth_strapi_template'
-          target='_blank'
-        >
-          Github Repo
-        </Link>
-      </Button>
+      <div className='space-x-5'>
+        <Button asChild className='w-36'>
+          <Link
+            href='https://github.com/EvandroCalado/auth_strapi_template'
+            target='_blank'
+          >
+            Project Repo
+          </Link>
+        </Button>
+        <Button asChild className='w-36'>
+          <Link href='https://github.com/EvandroCalado' target='_blank'>
+            Github
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };
